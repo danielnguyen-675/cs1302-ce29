@@ -27,7 +27,7 @@ public class ComplexityClasses extends Application {
     private static final int X_FINAL = 100; // exclusive
 
     /* Bound for the Y-axis in the line chart. */
-    private static final int Y_FINAL = 100; // inclusive
+    private static final int Y_FINAL = 100000; // inclusive
 
     /* Last Problem Size */
     private static final int N = X_FINAL - X_START;
@@ -65,6 +65,23 @@ public class ComplexityClasses extends Application {
             .addSeries(lc, x, genData(x, n -> Math.pow(n, 2.0) + 2.0 * n - 1.0), "quadratic-3");
         ChartUtility
             .addSeries(lc, x, genData(x, n -> Math.pow(n, 2.0) + 2.0 * n - 1.0), "quadratic-4");
+        ChartUtility
+            .addSeries(lc, x, genData(x, n -> 1.1 * Math.pow(n, 3.0) + 1.3 * n - 4.0), "cubic-1");
+        ChartUtility
+            .addSeries(lc, x, genData(x, n -> 2.2 * Math.pow(n, 3.0) + 1.5 * n + 2.0), "cubic-2");
+        ChartUtility
+            .addSeries(lc, x, genData(x, n -> 1.5 * Math.pow(n, 3.0) + n - 3.5), "cubic-3");
+        ChartUtility
+            .addSeries(lc, x, genData(x, n -> Math.pow(n, 3.0) - 42.0), "cubic-4");
+        ChartUtility
+            .addSeries(lc, x, genData(x, n -> Math.pow(2.0, n) + Math.pow(n, 2.0)), "exp1");
+        ChartUtility
+            .addSeries(lc, x, genData(x, n -> Math.pow(1.5, n) + 32.0), "exp2");
+        ChartUtility
+            .addSeries(lc, x, genData(x, n -> Math.pow(1.3, n) + n), "exp3");
+        ChartUtility
+            .addSeries(lc, x, genData(x, n -> 2.0 * Math.pow(1.2, n) - 0.5 * Math.pow(n, 3.0)), 
+                "exp4");
         
 
         Scene scene = new Scene(lc);
