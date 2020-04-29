@@ -18,35 +18,37 @@ import java.util.Arrays;
  *  - Quadratic Time <br>
  *  - Cubic Time <br>
  *  - Exponential Time <br>
- *  - Factorial Time <br>
+ *  - Factorial Time <br>.
  */
 public class ComplexityClasses extends Application {
 
     /* Bound for the X-axis in the line chart. */
-    private static final int X_START = 0;   // inclusive
+    private static final int X_START = 0; // inclusive
     private static final int X_FINAL = 100; // exclusive
 
     /* Bound for the Y-axis in the line chart. */
-    private static final int Y_FINAL = 100; // inclusive
+    private static final int Y_FINAL = 50; // inclusive
 
     /* Last Problem Size */
     private static final int N = X_FINAL - X_START;
 
     /* Line chart for plots. */
-    private LineChart<Number, Number> lc;
+    private LineChart < Number, Number > lc;
 
     /**
-     * The entry point for the JavaFX application
+     * The entry point for the JavaFX application.
+     *@param stage - the stage for the application window.
      */
     public void start(Stage stage) {
 
         // Initialize the values for the x-axis (Problem Size)
-	Integer[] x = IntStream.range(X_START, X_FINAL)
-	    .mapToObj(i -> i)
-	    .toArray(Integer[]::new);
+        Integer[] x = IntStream.range(X_START, X_FINAL)
+            .mapToObj(i -> i)
+            .toArray(Integer[]::new);
 
         // Create initial line chart and add the constant time data series
-        lc = ChartUtility.createChart(x, genData(x, n -> 10.0), "Size", "Operations", Y_FINAL, "Constant");
+        lc = ChartUtility.createChart(x, genData(x, n -> 10.0),
+            "Size", "Operations", Y_FINAL, "Constant");
         lc.setTitle("Complexity Classes");
 
         // Add the linear time data series to the line chart
@@ -54,7 +56,7 @@ public class ComplexityClasses extends Application {
 
         Scene scene = new Scene(lc);
         scene.getStylesheets().add("chartStyle.css"); // use CSS to remove line symbols
-        stage.setTitle("Complexity Classes");         // set app title
+        stage.setTitle("Complexity Classes"); // set app title
         stage.setScene(scene);
         stage.sizeToScene();
         stage.show();
@@ -77,9 +79,13 @@ public class ComplexityClasses extends Application {
      * @param x the array of input values
      * @param f the function to map index values to doubles
      */
-    public Double[] genData(Integer[] x, Function<Integer, Double> f) {
-        // TODO: Implement Me!
-        throw new UnsupportedOperationException("genData method not yet implemented");
+    public Double[] genData(Integer[] x, Function < Integer, Double > f) {
+        Double[] newX = new Double[x.length];
+        for (int i = 0; i < newX.length; i++) {
+            newX[i] = f.apply(x[i]);
+        }
+
+        return newX;
     } // genData
 
 } // ComplexityClasses
