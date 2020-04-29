@@ -24,10 +24,10 @@ public class ComplexityClasses extends Application {
 
     /* Bound for the X-axis in the line chart. */
     private static final int X_START = 0; // inclusive
-    private static final int X_FINAL = 100; // exclusive
+    private static final int X_FINAL = 500; // exclusive
 
     /* Bound for the Y-axis in the line chart. */
-    private static final int Y_FINAL = 50; // inclusive
+    private static final int Y_FINAL = 20000; // inclusive
 
     /* Last Problem Size */
     private static final int N = X_FINAL - X_START;
@@ -53,6 +53,12 @@ public class ComplexityClasses extends Application {
 
         // Add the linear time data series to the line chart
         ChartUtility.addSeries(lc, x, genData(x, n -> 1.0 * n), "Linear");
+        ChartUtility.addSeries(lc, x, genData(x, n -> 1.0 * n + 2.0), "Linear-2");
+        ChartUtility.addSeries(lc, x, genData(x, n -> 1.2 * n + 1.0), "Linear-3");
+        ChartUtility.addSeries(lc, x, genData(x, n -> 1.4 * n - 1.0), "Linear-4");
+        ChartUtility.addSeries(lc, x, genData(x, n -> 1.6 * n), "Linear-5");
+     
+        
 
         Scene scene = new Scene(lc);
         scene.getStylesheets().add("chartStyle.css"); // use CSS to remove line symbols
