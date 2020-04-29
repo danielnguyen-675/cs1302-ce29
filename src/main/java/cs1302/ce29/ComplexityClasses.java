@@ -24,10 +24,10 @@ public class ComplexityClasses extends Application {
 
     /* Bound for the X-axis in the line chart. */
     private static final int X_START = 0; // inclusive
-    private static final int X_FINAL = 500; // exclusive
+    private static final int X_FINAL = 100; // exclusive
 
     /* Bound for the Y-axis in the line chart. */
-    private static final int Y_FINAL = 20000; // inclusive
+    private static final int Y_FINAL = 100; // inclusive
 
     /* Last Problem Size */
     private static final int N = X_FINAL - X_START;
@@ -57,7 +57,14 @@ public class ComplexityClasses extends Application {
         ChartUtility.addSeries(lc, x, genData(x, n -> 1.2 * n + 1.0), "Linear-3");
         ChartUtility.addSeries(lc, x, genData(x, n -> 1.4 * n - 1.0), "Linear-4");
         ChartUtility.addSeries(lc, x, genData(x, n -> 1.6 * n), "Linear-5");
-     
+        ChartUtility
+            .addSeries(lc, x, genData(x, n -> Math.pow(n, 2.0) + 2.0 * n - 1.0), "quadratic-1");
+        ChartUtility
+            .addSeries(lc, x, genData(x, n -> 2.0 * Math.pow(n, 2.0) + 1.5 * n + 2.0), "quad-2");
+        ChartUtility
+            .addSeries(lc, x, genData(x, n -> Math.pow(n, 2.0) + 2.0 * n - 1.0), "quadratic-3");
+        ChartUtility
+            .addSeries(lc, x, genData(x, n -> Math.pow(n, 2.0) + 2.0 * n - 1.0), "quadratic-4");
         
 
         Scene scene = new Scene(lc);
